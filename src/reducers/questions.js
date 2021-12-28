@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, ADD_QUESTIONS, ADD_ANSWERS} from '../actions/questions';
+import { GET_QUESTIONS, ADD_QUESTIONS, ADD_ANSWERS } from '../actions/questions';
 
 export default function questions(state = {}, action) {
 	switch (action.type) {
@@ -15,15 +15,15 @@ export default function questions(state = {}, action) {
 			};
 
 		case ADD_ANSWERS:
-			const { id, answer, authedUser } = action.answerInfo;
+			const { qid, answer, authedUser } = action.answerInfo;
 
 			return {
 				...state,
-			[id]: {
-					...state[id],
+				[qid]: {
+					...state[qid],
 					[answer]: {
-						...state[id][answer],
-						votes: state[id][answer].votes.concat([authedUser])
+						...state[qid][answer],
+						votes: state[qid][answer].votes.concat([authedUser])
 					}
 				}
 			};

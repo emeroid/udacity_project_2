@@ -21,7 +21,7 @@ export default function users(state = {}, action) {
 			};
 
 		case ADD_ANSWERS:
-			const { id, answer, authedUser } = action.answerInfo;
+			const { qid, answer, authedUser } = action.answerInfo;
 
 			return {
 				...state,
@@ -29,7 +29,7 @@ export default function users(state = {}, action) {
 					...state[authedUser],
 					answers: {
 						...state[authedUser].answers,
-						[id]: answer
+						[qid]: answer
 					}
 				}
 			};

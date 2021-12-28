@@ -19,50 +19,50 @@ function addQuestion(question) {
 	};
 }
 
-function addAnswer({ id, answer, authorizedUser }) {
+function addAnswer({ qid, answer, authedUser }) {
 	return {
 		type: ADD_ANSWERS,
-		answerInfo: {               
-			id,
+		answerInfo: {
+			qid,
 			answer,
-			authorizedUser
+			authedUser
 		}
 	};
 }
 
 export function handleAddQuestion(optionOne, optionTwo) {
 	return (dispatch, getState) => {
-		const { authorizedUser } = getState();
+		const { authedUser } = getState();
 
 		dispatch(showLoading());
 
 		return saveQuestion({
-			firstOption: optionOne,
-			secondOption: optionTwo,
-			author: authorizedUser
+			optionOneText: optionOne,
+			optionTwoText: optionTwo,
+			author: authedUser
 		})
 			.then((question) => dispatch(addQuestion(question)))
 			.then(() => dispatch(hideLoading()));
 	};
 }
 
-export function handleAddAnswer(id, answer) {
+export function handleAddAnswer(qid, answer) {
 	return (dispatch, getState) => {
-		const { authorizedUser } = getState();
+		const { authedUser } = getState();
 
 		dispatch(showLoading());
 
 		return saveQuestionAnswer({
-			id,
+			qid,
 			answer,
-			authorizedUser
+			authedUser
 		})
 			.then(() =>
 				dispatch(
 					addAnswer({
-						id,
+						qid,
 						answer,
-						authorizedUser
+						authedUser
 					})
 				)
 			)

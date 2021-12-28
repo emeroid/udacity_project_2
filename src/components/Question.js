@@ -10,7 +10,7 @@ import Image from 'react-bootstrap/Image';
 class Question extends Component {
 	render() {
 		const { question, author } = this.props;
-		const { optionOne, id } = question;
+		const { optionOne, timestamp, id } = question;
 		const { name, avatarURL } = author;
 
 		return (

@@ -75,7 +75,7 @@ class CreateQuestion extends Component {
 									</Form.Group>
 									<Button
 										type="submit"
-										variant="outline-dark"
+										variant="outline-light"
 										disabled={firstOption === '' || secondOption === ''}
 									>
 										Submit
